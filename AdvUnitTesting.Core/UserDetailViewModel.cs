@@ -20,7 +20,7 @@ namespace AdvUnitTesting.Core
 
         public string FullName
         {
-            get { return $"{FirstName} {LastName}"; }
+            get { return $"{FirstName} {LastName}".Trim(); }
         }
 
         public bool IsLoggedIn { get; private set; }
