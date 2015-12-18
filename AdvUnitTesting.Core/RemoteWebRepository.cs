@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 
 namespace AdvUnitTesting.Core
 {
-    public class RemoteWebRepository
+    public class RemoteWebRepository : IRemoteWebRepository
     {
         public async Task<UserModel> LoadUser(int userId)
         {

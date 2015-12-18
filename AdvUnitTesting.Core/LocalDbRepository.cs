@@ -2,7 +2,7 @@
 
 namespace AdvUnitTesting.Core
 {
-    public class LocalDbRepository
+    public class LocalDbRepository : ILocalDbRepository
     {
         public async Task Save(UserModel user)
         {

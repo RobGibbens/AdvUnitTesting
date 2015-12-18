@@ -2,20 +2,11 @@ using System.Threading.Tasks;
 
 namespace AdvUnitTesting.Core
 {
-    public class AuthenticationService
+    public class AuthenticationService : IAuthenticationService
     {
-        private readonly string _userName;
-        private readonly string _password;
-
-        public AuthenticationService(string userName, string password)
+        public async Task<bool> Login(string userName, string password)
         {
-            _userName = userName;
-            _password = password;
-        }
-
-        public async Task<bool> Login()
-        {
-            if (string.IsNullOrWhiteSpace(_userName) || string.IsNullOrWhiteSpace(_password))
+            if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
             {
                 return await Task.FromResult(false);
             }

@@ -12,6 +12,7 @@ namespace AdvUnitTesting.Core
     [ImplementPropertyChanged]
     public class UserDetailViewModel
     {
+
         #region Properties
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -37,9 +38,16 @@ namespace AdvUnitTesting.Core
         #endregion
 
         private UserModel _user;
+        private readonly IRemoteWebRepository _remoteWebRepository;
+        private readonly ILocalDbRepository _localDbRepository;
+        private readonly IAuthenticationService _authenticationService;
 
-        public UserDetailViewModel()
+        public UserDetailViewModel(IRemoteWebRepository remoteWebRepository, ILocalDbRepository localDbRepository, IAuthenticationService authenticationService)
         {
+            _remoteWebRepository = remoteWebRepository;
+            _localDbRepository = localDbRepository;
+            _authenticationService = authenticationService;
+
             SaveCommand = new DelegateCommand(async () => await Save(), CanSave);
             LoadCommand = new DelegateCommand<int>(async (userId) => await Load(userId));
             LoginCommand = new DelegateCommand(async () => await Login(), CanLogin);
@@ -48,19 +56,22 @@ namespace AdvUnitTesting.Core
 
         private async Task Load(int id)
         {
-            var repository = new RemoteWebRepository();
-            _user = await repository.LoadUser(id);
+            _user = await _remoteWebRepository.LoadUser(id);
             this.FirstName = _user.FirstName;
             this.LastName = _user.LastName;
         }
 
         private async Task Save()
         {
+            if (_user == null)
+            {
+                _user = new UserModel();
+            }
+
             _user.FirstName = this.FirstName;
             _user.LastName = this.LastName;
 
-            var db = new LocalDbRepository();
-            await db.Save(_user);
+            await _localDbRepository.Save(_user);
         }
 
         private bool CanSave()
@@ -80,8 +91,7 @@ namespace AdvUnitTesting.Core
 
         private async Task Login()
         {
-            var authService = new AuthenticationService(this.UserName, this.Password);
-            this.IsLoggedIn = await authService.Login();
+            this.IsLoggedIn = await _authenticationService.Login(this.UserName, this.Password);
         }
 
         private bool CanLogin()

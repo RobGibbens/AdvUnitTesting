@@ -33,6 +33,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AuthenticationService.cs" />
+    <Compile Include="IAuthenticationService.cs" />
+    <Compile Include="ILocalDbRepository.cs" />
+    <Compile Include="IRemoteWebRepository.cs" />
     <Compile Include="LocalDbRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteWebRepository.cs" />
