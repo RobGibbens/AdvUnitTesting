@@ -9,7 +9,7 @@ using PropertyChanged;
 
 namespace AdvUnitTesting.Core
 {
-    [ImplementPropertyChanged]
+    //[ImplementPropertyChanged]
     public class UserDetailViewModel
     {
         #region Properties
