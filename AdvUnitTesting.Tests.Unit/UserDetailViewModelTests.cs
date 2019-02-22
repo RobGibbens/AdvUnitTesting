@@ -2,7 +2,7 @@
 using System;
 using AdvUnitTesting.Core;
 using Moq;
-using Ploeh.AutoFixture;
+using AutoFixture;
 using Should;
 
 namespace AdvUnitTesting.Tests.Unit
