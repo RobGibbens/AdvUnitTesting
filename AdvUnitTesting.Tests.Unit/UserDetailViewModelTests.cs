@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using System;
 using AdvUnitTesting.Core;
-using Ploeh.AutoFixture;
 using Should;
+using AutoFixture;
 
 namespace AdvUnitTesting.Tests.Unit
 {
