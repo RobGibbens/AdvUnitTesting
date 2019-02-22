@@ -4,8 +4,10 @@ using System.Windows.Input;
 
 namespace AdvUnitTesting.Core
 {
-    public class UserDetailViewModel
+    public class UserDetailViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         #region Properties
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,7 +20,6 @@ namespace AdvUnitTesting.Core
         }
 
         public bool IsLoggedIn { get; private set; }
-        public event PropertyChangedEventHandler PropertyChanged;
         public bool IsChanged { get; set; }
         public bool IsFavorite { get; private set; }
         #endregion
