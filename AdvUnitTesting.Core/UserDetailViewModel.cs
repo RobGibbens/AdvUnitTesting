@@ -1,25 +1,25 @@
 ﻿using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using PropertyChanged;
 
 namespace AdvUnitTesting.Core
 {
-    public class UserDetailViewModel
+    public class UserDetailViewModel : INotifyPropertyChanged
     {
 
+        public event PropertyChangedEventHandler PropertyChanged;
         #region Properties
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
 
-        public string FullName
-        {
-            get { return $"{FirstName} {LastName}".Trim(); }
-        }
+        public string FullName => $"{FirstName} {LastName}".Trim();
 
         public bool IsLoggedIn { get; private set; }
-        public event PropertyChangedEventHandler PropertyChanged;
+
+
         public bool IsChanged { get; set; }
         public bool IsFavorite { get; private set; }
         #endregion

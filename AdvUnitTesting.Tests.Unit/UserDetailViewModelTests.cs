@@ -121,8 +121,13 @@ namespace AdvUnitTesting.Tests.Unit
         [Test]
         public void Can_save_when_user_changed()
         {
-            var vm = new UserDetailViewModel(_remoteWebRepository.Object, _localDbRepository.Object, _authenticationService.Object);
-            vm.FirstName = _fixture.Create<string>();
+            var vm = new UserDetailViewModel(
+                _remoteWebRepository.Object, 
+                _localDbRepository.Object,
+                _authenticationService.Object)
+            {
+                FirstName = _fixture.Create<string>()
+            };
             vm.SaveCommand.CanExecute(null).ShouldBeTrue();
         }
 

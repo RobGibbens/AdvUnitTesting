@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AdvUnitTesting.Tests.Unit</RootNamespace>
     <AssemblyName>AdvUnitTesting.Tests.Unit</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
